@@ -6,5 +6,5 @@ setup(
     ],
     tests_require=[
         'pytest',
-    ], install_requires=['requests', 'tornado']
+    ], install_requires=['requests', 'tornado', 'PyYAML']
 )

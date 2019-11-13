@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 def make_app():
     return tornado.web.Application([
-        (r"/api/v1/geocoding/retrieveaddress", RetrieveAddressHandler),
+        (r"/api/v1/geocoding/retrieveaddress/(.*)", RetrieveAddressHandler),
     ])
 
 

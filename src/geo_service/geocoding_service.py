@@ -7,7 +7,10 @@ logger = logging.getLogger(__name__)
 
 class GeoService:
     def __init__(self):
-        # Add Geocoding service to the list if there is more.
+        """"
+        Add Geocoding service to the list if there is more.
+        In production we can move this to the configuration file, which let us switch the sequence without change code
+        """
         self.geocoding_services = [GoogleGeocoding, HereGeocoding]
 
     def retrieve_address(self, lat: float, lng: float) -> dict:

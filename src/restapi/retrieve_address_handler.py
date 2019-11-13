@@ -1,5 +1,6 @@
 import logging
 import traceback
+from re import match
 
 import tornado.web
 
@@ -12,10 +13,14 @@ logger = logging.getLogger(__name__)
 class RetrieveAddressHandler(BaseHandler):
     def get(self, *args, **kwargs):
         try:
-            logger.debug(self.get_arguments("lat"))
-            logger.debug(self.get_arguments("lng"))
-            lat = float(self.get_arguments("lat")[0])
-            lng = float(self.get_arguments("lng")[0])
+            para = match(r"/api/v1/geocoding/retrieveaddress/(.*)", self.request.uri).groups()[0]
+            if not para:
+                raise tornado.web.HTTPError(400)
+
+            gps = para.split('/')
+            lat = float(gps[0])
+            lng = float(gps[1])
+            logger.info('Receive lat {}, lng {}'.format(lat, lng))
 
             if lat < -90 or lat > 90 or lng < -180 or lng > 180:
                 raise tornado.web.HTTPError(400, 'Invalid input or gps location, lat (-90, 90), lng (-180, 180)')

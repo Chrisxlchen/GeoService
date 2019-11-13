@@ -1,5 +1,7 @@
 import json
 import logging
+import traceback
+
 import requests
 from geo_service.geocoding_base import GeocodingBase
 
@@ -25,6 +27,7 @@ class HereGeocoding(GeocodingBase):
             address = self.get_address_from_response(ret)
         except:
             logger.error('Failed to get address')
+            logger.error(traceback.format_exc())
 
         return address
 
@@ -42,6 +45,7 @@ class HereGeocoding(GeocodingBase):
                 "PostalCode": "60606"
             }
         """
+
         resp = ret.get('Response')
         address = {}
         if resp:
