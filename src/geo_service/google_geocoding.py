@@ -3,6 +3,8 @@ import logging
 import traceback
 
 import requests
+
+from commons.config import Config
 from geo_service.geocoding_base import GeocodingBase
 
 logger = logging.getLogger(__name__)
@@ -12,7 +14,7 @@ class GoogleGeocoding(GeocodingBase):
     def __init__(self):
         super().__init__()
         self.url = 'https://maps.googleapis.com/maps/api/geocode/json'
-        self.key = 'AIzaSyCXrs6YydMbayE4w0gReBlPvIGBHR5AsxE'
+        self.key = Config.get_gogole_key()
 
     def retrieve_address(self, lat: float, lng: float) -> dict:
         address = None

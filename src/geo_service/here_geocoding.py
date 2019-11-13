@@ -3,6 +3,8 @@ import logging
 import traceback
 
 import requests
+
+from commons.config import Config
 from geo_service.geocoding_base import GeocodingBase
 
 logger = logging.getLogger(__name__)
@@ -12,8 +14,7 @@ class HereGeocoding(GeocodingBase):
     def __init__(self):
         super().__init__()
         self.url = 'https://reverse.geocoder.api.here.com/6.2/'
-        self.app_id = 'zA1C3SxTGHdz7mi7glta'
-        self.app_code = '7nHBdtNyW_sDLQU2UNg0PA'
+        self.app_id, self.app_code = Config.get_here_info()
         self.radius = 10
 
     def retrieve_address(self, lat: float, lng: float) -> dict:
