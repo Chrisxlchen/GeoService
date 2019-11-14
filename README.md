@@ -7,18 +7,20 @@ The documentation will cover following topics
 ## How to run program
 1. From pycharm
    - Open GeoService from pycharm.
-   - Go to, File | Settings | Project: GeoService | Project Interpreter, add new venv in the project.
-   - pip install -r requirements.txt
+   - Go to, File | Settings | Project: GeoService | Project Interpreter, add new venv in the project use python3.
+   - run "pip3 install -r requirements.txt" in pycharm terminal window
+   - Verify by unit test. "cd app", "./run_unittest.sh"
    - run main.py
 
 2. From command line:
    - cd GeoService
+   - sudo apt-get install python3-pip
    - sudo pip3 install virtualenv
    - virtualenv venv
    - source venv/bin/activate
-   - pip install -r requirements.txt
+   - pip3 install -r requirements.txt
    - cd app 
-   - ../vevn/bin/python main.py
+   - ../venv/bin/python main.py
    
 3. Use docker for Production
    - cd GeoService
