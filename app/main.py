@@ -1,6 +1,12 @@
+import logging
+
 from flask import Flask
 from commons.constants import Constants
+from commons.log import setup_logging
 from restapi.retrieve_address_handler import RetrieveAddressHandler
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
