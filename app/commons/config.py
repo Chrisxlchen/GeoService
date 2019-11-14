@@ -4,7 +4,7 @@ import threading
 import traceback
 import yaml
 
-from app.commons.constants import Constants
+from commons.constants import Constants
 
 logger = logging.getLogger(__name__)
 
